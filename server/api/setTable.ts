@@ -1,7 +1,6 @@
-import type { IncomingMessage, ServerResponse } from "http"
 import { readBody } from 'h3'
 import Airtable from 'airtable'
-import type { FieldSet } from 'airtable'
+// import type { FieldSet } from 'airtable'
 
 export default defineEventHandler(async (event): Promise<any> => {
     const rcds = await readBody(event)
@@ -14,7 +13,11 @@ export default defineEventHandler(async (event): Promise<any> => {
             rcds,
             (err, records) => {
                 if (err) {
-                    reject(err)
+                    reject({
+                        err,
+                        // k: runtimeConfig.key,
+                        // b: runtimeConfig.base
+                    })
                 }
                 else {
                     resolve(true)

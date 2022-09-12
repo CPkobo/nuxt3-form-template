@@ -2,6 +2,7 @@
     <div class="form-body">
         <SingleParsen v-for="person, index in data.participants" :key="'part-'+index" :index="index" />
         <button class="button is-fullwidth is-info" @click="submitForm">{{ ui.form.submit[data.lang] }}</button>
+        <p v-if="success !== ''">{{ success }} </p>
         <ErrMessage v-if="message.length > 0" />
     </div>
 </template>
@@ -12,6 +13,7 @@ import SingleParsen from './SingleParsen.vue';
 const data = useData()
 const ui = useUi()
 const message = useMessage()
+const success = ref('')
 
 const submitForm = () => {
     console.log('submitted')
@@ -22,7 +24,8 @@ const submitForm = () => {
     else {
         fetch('/api/setTable', { method: "POST", body: JSON.stringify(records) })
             .then(records => {
-                console.log(records)
+                // console.log(records)
+                success.value = 'OK'
             })
             .catch((err) => {
                 console.log('failed')
