@@ -1,3 +1,5 @@
+declare type UsedLang = 'ja' | 'zh'
+
 declare interface ParticipantData {
     name: string
     unit: string
@@ -10,5 +12,13 @@ declare interface ParticipantData {
 
 declare interface ParticipantFormData {
     participants: ParticipantData[]
-    lang: 'ja' | 'zh'
+    lang: UsedLang
+}
+
+declare interface ParticipantRecord extends ParticipantData {
+    lang: UsedLang
+}
+
+declare interface ParticipantRecordPost {
+    fields: PrticipantRecord
 }
