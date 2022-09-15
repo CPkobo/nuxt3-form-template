@@ -16,6 +16,7 @@
   "dependencies": {
     "airtable": "^0.11.4",
     "bulma": "^0.9.4",
+    "elasticemail": "^0.2.0",
     "h3": "^0.7.21"
   }
 }

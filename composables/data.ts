@@ -3,14 +3,19 @@ const data: ParticipantFormData = {
         {
             name: '',
             unit: '',
+            division: '',
             title: '',
             email: '',
             tel: '',
             wechat: '',
-            joinAt: '大阪'
+            joinAt: 'ONLINE',
         }
     ],
-    lang: 'ja'
+    lang: 'ja',
+    fromWhich: '',
+    fromOther: '',
+    toRemove: false,
+    removing: -1
 }
 
 export const useData = () => {
