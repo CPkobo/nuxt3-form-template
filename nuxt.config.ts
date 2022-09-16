@@ -6,5 +6,6 @@ export default defineNuxtConfig({
     runtimeConfig: {
         base: process.env.BASE,
         key: process.env.KEY,
+        pw: process.env.PW
     }
 })

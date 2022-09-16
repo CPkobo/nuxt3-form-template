@@ -15,6 +15,7 @@ declare interface UiText {
         title: DoubleString
         email: DoubleString
         tel: DoubleString
+        website: DoubleString
         wechat: DoubleString
         joinAt: DoubleString
         submit: DoubleString
@@ -24,6 +25,7 @@ declare interface UiText {
         removeTips: DoubleString
         removeModalTitle: DoubleString
         coopSelect: DoubleString
+        exceedLimit: DoubleString
     },
     coops: DoubleString[]
 }

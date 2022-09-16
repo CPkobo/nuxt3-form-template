@@ -9,13 +9,9 @@ export default defineEventHandler((event): Promise<any> => {
     }).base(runtimeConfig.base)
     return new Promise((resolve, reject) => {
         base("Count").find('recHoE0i6SbyHjvAO', (err, record) => {
-            console.log(err)
-            // console.log(record.fields)
             if (err) {
                 reject({
                     err,
-                    // k: runtimeConfig.key,
-                    // b: runtimeConfig.base
                 })
             }
             else {

@@ -9,11 +9,9 @@ export default defineEventHandler(async (event): Promise<any> => {
         apiKey: runtimeConfig.key
     }).base(runtimeConfig.base)
     return new Promise((resolve, reject) => {
-        console.log(rcds)
         base("Table 1").create(
             rcds,
             (err, records) => {
-                console.log(err)
                 if (err) {
                     reject({
                         err,

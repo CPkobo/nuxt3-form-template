@@ -38,6 +38,12 @@
             </div>
         </div>
         <div class="field">
+            <label class="label">{{ ui.form.website[data.lang] }}</label>
+            <div class="control">
+                <input class="input" type="tel" v-model="person.website">
+            </div>
+        </div>
+        <div class="field">
             <label class="label">{{ ui.form.wechat[data.lang] }}</label>
             <div class="control">
                 <input class="input" type="text" v-model="person.wechat">
@@ -45,20 +51,21 @@
         </div>
         <div class="field">
             <label class="label">{{ ui.form.joinAt[data.lang] }}</label>
+            <div class="notification is-danger" v-if="counter.offline >= counter.offlineLimit">
+                {{ ui.form.exceedLimit[data.lang] }}
+            </div>
             <div class="select">
                 <select v-model="person.joinAt">
-                    <option v-if="data.lang==='ja'" value="ONLINE" :disabled="counter.online > counter.onlineLimit">
+                    <option v-if="data.lang==='ja'" value="ONLINE" :disabled="counter.online >= counter.onlineLimit">
                         オンライン（Zoom予定）</option>
-                    <option v-if="data.lang==='zh'" value="ONLINE" :disabled="counter.online > counter.onlineLimit">
+                    <option v-if="data.lang==='zh'" value="ONLINE" :disabled="counter.online >= counter.onlineLimit">
                         线上参加（计划使用Zoom）</option>
-                    <option v-if="data.lang==='ja'" value="大阪" :disabled="counter.offline > counter.offlineLimit">
+                    <option v-if="data.lang==='ja'" value="大阪" :disabled="counter.offline >= counter.offlineLimit">
                         本会場での参加（ホテルニューオータニ大阪 2階
                         鳳凰Ⅲ） 定員100名</option>
-
-                    <option v-if="data.lang==='zh'" value="大阪" :disabled="counter.offline > counter.offlineLimit">
+                    <option v-if="data.lang==='zh'" value="大阪" :disabled="counter.offline >= counter.offlineLimit">
                         线下会场参加（大阪新大谷酒店 2楼 凤凰Ⅲ）
                         上限100名</option>
-
                 </select>
             </div>
         </div>
@@ -93,6 +100,7 @@ const addPerson = () => {
         title: '',
         email: person.email,
         tel: person.tel,
+        website: person.website,
         wechat: '',
         // joinAt: person.joinAt === '大阪' ? '大阪' : person.joinAt === '中国' ? '中国' : 'オンライン'
         joinAt: person.joinAt,

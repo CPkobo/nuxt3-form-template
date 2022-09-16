@@ -32,6 +32,7 @@ declare interface ParticipantData {
     email: string
     tel: string
     wechat?: string
+    website: string
     joinAt: Joinables
 }
 
@@ -50,7 +51,7 @@ declare interface ParticipantRecord extends ParticipantData {
 }
 
 declare interface ParticipantRecordPost {
-    fields: PrticipantRecord
+    fields: ParticipantRecord
 }
 
 declare interface CounterInfo {

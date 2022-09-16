@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@types/airtable": "^0.10.1",
+    "@types/nodemailer": "^6.4.6",
     "node-sass": "^7.0.3",
     "nuxt": "3.0.0-rc.9",
     "sass": "^1.54.9"
@@ -16,7 +17,7 @@
   "dependencies": {
     "airtable": "^0.11.4",
     "bulma": "^0.9.4",
-    "elasticemail": "^0.2.0",
-    "h3": "^0.7.21"
+    "h3": "^0.7.21",
+    "nodemailer": "^6.7.8"
   }
 }

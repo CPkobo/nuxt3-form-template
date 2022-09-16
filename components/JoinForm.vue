@@ -23,6 +23,8 @@ const added: CounterInfo = {
     offline: 0
 }
 
+const isMock = false
+
 const submitForm = () => {
     isLoading.value = true
     const records = validateAndCreateFields()
@@ -30,24 +32,44 @@ const submitForm = () => {
         isLoading.value = false
     }
     else {
-        fetch('/api/setTable', { method: "POST", body: JSON.stringify(records) })
-            .then(() => {
-                fetch('/api/addCount', { method: "POST", body: JSON.stringify(added) })
-                    .then(() => {
-                        isLoading.value = false
+        const prs: Promise<any>[] = []
+        fetch('/api/getCount')
+            .then(res => {
+                res.json().then(crtCount => {
+                    const counter = useCounter()
+                    if (crtCount.Offline >= counter.value.offlineLimit) {
+                        const router = useRouter()
+                        router.push('/sorry')
+                    }
+                    else if ((crtCount.Offline + added.offline) >= counter.value.offlineLimit) {
+                        const router = useRouter()
+                        router.push('/sorry')
+                    }
+                    else if (isMock) {
+                        alert('mock mode')
                         const router = useRouter()
                         router.push('/success')
-                    })
-                    .catch(() => {
-                        isLoading.value = false
-                        const router = useRouter()
-                        router.push('/success')
-                    })
+                    }
+                    else {
+                        prs.push(fetch('/api/setTable', { method: "POST", body: JSON.stringify(records) }))
+                        prs.push(fetch('/api/addCount', { method: "POST", body: JSON.stringify(added) }))
+                        prs.push(fetch('/api/sendMail', { method: 'POST', body: JSON.stringify(records) }))
+                        Promise.all(prs)
+                            .then(() => {
+                                isLoading.value = false
+                                const router = useRouter()
+                                router.push('/success')
+                            })
+                            .catch(() => {
+                                isLoading.value = false
+                                const router = useRouter()
+                                router.push('/failed')
+                            })
+                    }
+                })
             })
-            .catch((err) => {
-                isLoading.value = false
-                console.log('failed')
-                console.log(err)
+            .catch(err => {
+                console.error(err)
             })
     }
 }

@@ -7,6 +7,7 @@ const data: ParticipantFormData = {
             title: '',
             email: '',
             tel: '',
+            website: '',
             wechat: '',
             joinAt: 'ONLINE',
         }

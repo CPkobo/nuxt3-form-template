@@ -1,5 +1,15 @@
 <template>
   <main class="container" :class="{'is-ja': data.lang==='ja', 'is-zh': data.lang==='zh'}">
+
+    <Head>
+      <Title>{{ ui.top.title[data.lang] }}</Title>
+      <Meta property="og:title" content="日中国交正常化 50周年記念事業 参加申し込みフォーム" />
+      <Meta property="og:description" content="日中国交正常化 50周年記念事業の参加申し込みはこちらから" />
+      <Meta property="og:image" content="https...." />
+      <Meta property="og:url" content="https://kankeiren-jc50th.netlify.app" />
+      <Meta property="og:type" content="website" />
+      <Meta property="og:site_name" content="日中国交正常化 50周年記念事業 参加申し込みフォーム" />
+    </Head>
     <HeroTitle />
     <div id="lang-selector">
       <div class="select">
@@ -38,7 +48,6 @@ onMounted(() => {
   fetch('/api/getCount')
     .then(res => {
       res.json().then(data => {
-        // console.log(data)
         const counter = useCounter()
         counter.value.offline = data.Offline
         counter.value.online = data.Online

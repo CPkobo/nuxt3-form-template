@@ -1,9 +1,13 @@
 <template>
   <main class="container" :class="{'is-ja': data.lang==='ja', 'is-zh': data.lang==='zh'}">
+
+    <Head>
+      <Script src="https://smtpjs.com/v3/smtp.js"></Script>
+    </Head>
     <HeroTitle />
     <section v-if="data.lang === 'ja'" class="content section">
-      <h2>登録が完了しました</h2>
-      <p>このたびはご登録いただきまして、ありがとうございます。</p>
+      <h2>お申込みありがとうございます</h2>
+      <p>このたびはお申し込みいただきまして、ありがとうございます。</p>
       <p>後ほど、ご登録のメールアドレスに<a :href="'mailto:' + email">{{ email }}</a>より確認のメールが送信されます。</p>
       <p>万一確認メールが届かなかった場合は、お手数ですが迷惑メールをご確認いただくか、上記のメールアドレスまでご連絡ください。</p>
     </section>
@@ -16,18 +20,12 @@
   </main>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import HeroTitle from '../components/HeroTitle.vue';
 const data = useData()
-
-const email = "info@kankeiren-jc50th.com"
-
+const email = 'info@kankeiren-jc50th.com'
 </script>
 
 <style>
-/* main {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-} */
+
 </style>

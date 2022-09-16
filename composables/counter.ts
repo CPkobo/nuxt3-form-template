@@ -1,7 +1,7 @@
 const counter: CounterState = {
     offline: 0,
     online: 0,
-    offlineLimit: 100,
+    offlineLimit: 72,
     onlineLimit: 500
 }
 
