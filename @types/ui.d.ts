@@ -6,6 +6,7 @@ declare interface DoubleString {
 declare interface UiText {
     top: {
         title: DoubleString
+        privacy: DoubleString
     },
     form: {
         participant: DoubleString

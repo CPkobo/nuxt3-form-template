@@ -5,6 +5,11 @@
         <SingleParsen v-for="person, index in data.participants" :key="'part-'+index" :index="index" />
         <CoopSelector />
         <ErrMessage v-if="message.length > 0" />
+        <div class="notification is-info is-light">
+            <p>{{ ui.top.privacy[data.lang] }}</p>
+            <a href="https://www.kankeiren.or.jp/policy.html"
+                target="_blank">https://www.kankeiren.or.jp/policy.html</a>
+        </div>
         <button class="button is-fullwidth is-info" :class="{'is-loading': isLoading}" @click="submitForm">{{
         ui.form.submit[data.lang] }}</button>
     </div>
