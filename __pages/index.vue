@@ -21,11 +21,8 @@
     </div>
     <section class="content section">
       <div class="card">
-        <section class="content section">
-          <!-- <h1 class="title">{{ ui.top.title[data.lang] }}</h1> -->
-          <p class="is-size-3">本事業への申し込みは締め切らせていただきました。今後の事業にもぜひご注目ください。</p>
-          <p class="is-size-3 is-zh">本项目报名已截止，敬请期待我们今后的活动。</p>
-        </section>
+        <!-- <h1 class="title">{{ ui.top.title[data.lang] }}</h1> -->
+        <JoinForm />
       </div>
     </section>
   </main>
@@ -69,9 +66,9 @@ onMounted(() => {
   margin-left: auto;
   margin-right: auto;
 } */
-p.is-ja {}
+main.is-ja {}
 
-p.is-zh {
+main.is-zh {
   font-family: Simhei, Heiti
 }
 
